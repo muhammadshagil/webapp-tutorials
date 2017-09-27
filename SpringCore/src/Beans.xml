@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+<!-- init-method="init" destroy-method="destroy" -->
+   <!-- <bean id="initHelloWorld" class="com.springcore.InitHelloWorld"/>-->
+   
+   <bean id ="helloWorld" class="com.springcore.HelloWorld" >
+      <property name="message1" value="Hello World!"/>
+   </bean>
+   
+   <bean id ="helloIndia" class="com.springcore.HelloIndia" parent="helloWorld" >
+      <property name="message2" value="Hello india"/>
+   </bean>
+   
+   <bean id ="javaCollection" class="com.springcore.JavaCollection" >
+      <property name="addressList">
+      <list>
+      	<value>INDIA</value>
+      	<value>USA</value>
+      	<value>USA</value>
+      	<value>UK</value>
+      </list>
+      </property>
+      <property name="addressSet">
+      <set>
+      	<value>INDIA</value>
+      	<value>USA</value>
+      	<value>USA</value>
+      	<value>UK</value>
+      </set>
+      </property>
+      <property name="addressMap">
+      <map>
+      	<entry key="1" value="IN"/>
+      	<entry key="2" value="US"/>
+      	<entry key="3" value="US"/>
+      	<entry key="4" value="UK"/>
+      </map>
+      </property>
+     <property name="addressProperties">
+      <props>
+      	<prop key="1">IN</prop>
+      	<prop key="2">US</prop>
+      	<prop key="3">US</prop>
+      	<prop key="4">UK</prop>
+      </props>
+      </property>
+   </bean>
+   
+   
+      <!-- Initialization for data source -->
+   <bean id="dataSource" 
+      class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name = "driverClassName" value ="oracle.jdbc.driver.OracleDriver"/>
+      <property name = "url" value = "jdbc:oracle:thin:@localhost:1521:orcl12c"/>
+      <property name = "username" value = "system"/>
+      <property name = "password" value = "oracle"/>
+   </bean>
+
+   <!-- Definition for studentJDBCTemplate bean -->
+   <bean id = "jdbcTemplateDAO" 
+      class = "com.springcore.JdbcTemplateDAO">
+      <property name ="dataSource" ref ="dataSource" />    
+   </bean>
+</beans>

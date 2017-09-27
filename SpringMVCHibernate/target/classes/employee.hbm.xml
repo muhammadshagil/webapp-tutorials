@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping>
+<class name="co.sha.model.Employee" table="spring_employee" >
+<id name="id" type="int" column="id"></id>
+<property name="name" column="name">
+</property>
+
+<property name="email" column="email"></property>
+<property name="telephone" column="telephone"></property>
+<property name="password" column="password"></property>
+</class>
+</hibernate-mapping>
